@@ -2,8 +2,6 @@ package com.example.devtrainee.transitiondemo;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,7 +13,6 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -45,7 +42,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        
+
         Fade enterFade = new Fade();
         enterFade.setDuration(2000);
 
@@ -82,19 +79,9 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         Fragment nextFragment= Fragment2.getInstance();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
 
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-
-            Fade exitFade = new Fade();
-            exitFade.setDuration(EXIT_FADE_DURATION);
-            previousFragment.setExitTransition(exitFade);
-
-            Fade enterFade= new Fade();
-            enterFade.setStartDelay(1000);
-            enterFade.setDuration(ENTER_FADE_DURATION);
-            nextFragment.setEnterTransition(enterFade);
+        TransitionUtils.performTransition(previousFragment, nextFragment);
 
             fragmentTransaction.replace(R.id.fragment_container, nextFragment);
             fragmentTransaction.commitAllowingStateLoss();
         }
     }
-}

@@ -39,6 +39,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         ButterKnife.bind(this);
         btSecond.setOnClickListener(this);
 
+
     }
 
     @Override
