@@ -1,10 +1,7 @@
 package com.example.devtrainee.transitiondemo;
 
-import android.content.Context;
 import android.os.Build;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.transition.Fade;
 
 public class TransitionUtils {

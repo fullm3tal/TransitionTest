@@ -29,16 +29,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         Fade enterFade = new Fade();
         enterFade.setDuration(1000);
-
-        Fade exitFade = new Fade();
-        enterFade.setDuration(3000);
-
         getWindow().setEnterTransition(enterFade);
-        getWindow().setExitTransition(exitFade);
 
         ButterKnife.bind(this);
         btSecond.setOnClickListener(this);
-
 
     }
 
@@ -46,8 +40,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.bt_second:
-                ViewGroup viewGroup= findViewById(R.id.transition_container);
-                TransitionManager.beginDelayedTransition(viewGroup);
                 ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(this);
                 startActivity(new Intent(this, MainActivity.class), options.toBundle());
                 break;

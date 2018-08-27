@@ -13,6 +13,7 @@ import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -45,8 +46,6 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
         Fade enterFade = new Fade();
         enterFade.setDuration(2000);
-
-        getActivity().getWindow().setEnterTransition(new Fade());
 
         View view = inflater.inflate(R.layout.frag_first, container, false);
         fragmentManager= getFragmentManager();
