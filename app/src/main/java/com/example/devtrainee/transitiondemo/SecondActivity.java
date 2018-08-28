@@ -1,16 +1,14 @@
 package com.example.devtrainee.transitiondemo;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
-import android.transition.TransitionInflater;
-import android.transition.TransitionManager;
+import android.transition.Transition;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -40,8 +38,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.bt_second:
-                ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(this);
-                startActivity(new Intent(this, MainActivity.class), options.toBundle());
+                startActivity(new Intent(this, MainActivity.class));
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 break;
         }
     }

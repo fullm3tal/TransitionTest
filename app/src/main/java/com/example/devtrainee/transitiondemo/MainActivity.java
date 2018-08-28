@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadFirstFragment() {
         Fragment initialFragment = Fragment1.getInstance();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, initialFragment);
+        fragmentTransaction.add(R.id.fragment_container, initialFragment,"FirstFragment");
         fragmentTransaction.commit();
     }
 

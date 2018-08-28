@@ -14,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,10 +45,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        Fade enterFade = new Fade();
-        enterFade.setDuration(2000);
-
+        System.out.println(" Fragment 1 OnCreateView called");
         View view = inflater.inflate(R.layout.frag_first, container, false);
         fragmentManager= getFragmentManager();
         if (view != null) {
@@ -59,28 +58,58 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        System.out.println(" Fragment 1 OnStart called");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        System.out.println("Fragment 1 OnResume called");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        System.out.println("Fragment 1 OnPause called");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        System.out.println("Fragment 1 OnStop called");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.out.println("Fragment 1 OnDestroy called");
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_frag1:
-                performTransition();
+                showTransition();
                 break;
 
             case R.id.bt_frag_second:
 
-                TransitionManager.beginDelayedTransition(viewGroup);
-                ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(getActivity());
-                startActivity(new Intent(getActivity(), SecondActivity.class),options.toBundle());
+                Intent intent= new Intent(getContext(), SecondActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 break;
         }
     }
-    private void performTransition() {
-        Fragment previousFragment= fragmentManager.findFragmentById(R.id.fragment_container);
-        Fragment nextFragment= Fragment2.getInstance();
-        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
+    private void showTransition() {
 
-        TransitionUtils.performTransition(previousFragment, nextFragment);
+        Fragment2 nextFragment= Fragment2.getInstance();
+       FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
 
-            fragmentTransaction.replace(R.id.fragment_container, nextFragment);
-            fragmentTransaction.commitAllowingStateLoss();
+//        TransitionUtils.performTransition(fragmentManager, nextFragment);
+
+            fragmentTransaction.add(R.id.fragment_container, nextFragment,"SecondFragment");
+            fragmentTransaction.commit();
         }
     }

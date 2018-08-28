@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="Center Master"
+        android:text="First Fragment"
         android:textAllCaps="false"
         android:id="@+id/frag1"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -19,9 +19,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go to Center Client"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="Go to Second Fragment"
         android:padding="8dp"
         android:id="@+id/bt_frag1"
         android:layout_marginTop="10dp"
@@ -30,8 +30,8 @@
         app:layout_constraintTop_toBottomOf="@id/frag1"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:text="Go to Second Activity"
         android:padding="8dp"
         android:id="@+id/bt_frag_second"

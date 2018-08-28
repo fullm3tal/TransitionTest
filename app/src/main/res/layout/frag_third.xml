@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondActivity"
-    android:id="@+id/transition_container"
-    android:background="#785808">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4e6f54">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Second Activity"
-        android:textSize="20dp"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="20sp"
+        android:text="Third Fragment"
+        android:id="@+id/frag3"
+        android:textAllCaps="false"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/bt_second" />
-    />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <Button
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:text="Go to First Fragment"
-        android:id="@+id/bt_second"
+        android:id="@+id/bt_frag3"
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/frag3"/>
+
 
 </android.support.constraint.ConstraintLayout>

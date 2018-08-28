@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -17,14 +18,19 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        button_third= (Button) findViewById(R.id.bt_third);
+        button_third = (Button) findViewById(R.id.bt_third);
         button_third.setOnClickListener(this);
-        Fade enterFade= new Fade();
+        setWindowAnimations();
+    }
+
+    private void setWindowAnimations() {
+//        Slide enterSlide= new Slide();
+//        enterSlide.setDuration(2000);
+        Fade enterFade = new Fade();
         enterFade.setDuration(2000);
-        Fade exitFade= new Fade();
-        exitFade.setDuration(2000);
+//        enterFade.excludeTarget(android.R.id.statusBarBackground, true);
+//        enterFade.excludeTarget(android.R.id.navigationBarBackground, true);
         getWindow().setEnterTransition(enterFade);
-        getWindow().setExitTransition(exitFade);
     }
 
     @Override
