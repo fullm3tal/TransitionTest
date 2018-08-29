@@ -35,6 +35,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     public static final int ENTER_FADE_DURATION=1000;
     ViewGroup viewGroup;
 
+    //Test
     public Fragment1() {
     }
 
