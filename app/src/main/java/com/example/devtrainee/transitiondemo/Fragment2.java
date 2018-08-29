@@ -92,7 +92,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener {
         Fragment nextFragment= Fragment1.getInstance();
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
 
-            fragmentTransaction.add(R.id.fragment_container, nextFragment,"FirstFragment");
+            fragmentTransaction.replace(R.id.fragment_container, nextFragment,"FirstFragment");
             fragmentTransaction.commit();
         }
 }

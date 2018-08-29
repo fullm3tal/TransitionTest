@@ -29,10 +29,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     @BindView(R.id.bt_frag_second)
     Button buttonSecondFrag;
 
-
+//Test
     FragmentManager fragmentManager;
-    public static final int EXIT_FADE_DURATION=1000;
-    public static final int ENTER_FADE_DURATION=1000;
     ViewGroup viewGroup;
 
     public Fragment1() {
@@ -58,36 +56,6 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        System.out.println(" Fragment 1 OnStart called");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        System.out.println("Fragment 1 OnResume called");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        System.out.println("Fragment 1 OnPause called");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        System.out.println("Fragment 1 OnStop called");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        System.out.println("Fragment 1 OnDestroy called");
-    }
-
-    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_frag1:
@@ -107,9 +75,12 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         Fragment2 nextFragment= Fragment2.getInstance();
        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
 
-//        TransitionUtils.performTransition(fragmentManager, nextFragment);
+//       TransitionUtils.performTransition(nextFragment);
 
-            fragmentTransaction.add(R.id.fragment_container, nextFragment,"SecondFragment");
+            fragmentTransaction.setCustomAnimations(0,0,R.anim.fade_in,R.anim.fade_out);
+            fragmentTransaction.replace(R.id.fragment_container, nextFragment);
+
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
     }

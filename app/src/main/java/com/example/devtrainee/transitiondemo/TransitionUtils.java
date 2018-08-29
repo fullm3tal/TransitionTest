@@ -26,4 +26,14 @@ public class TransitionUtils {
         }
     }
 
+    public static void performTransition(Fragment fragment) {
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+
+            Fade exitFade = new Fade();
+            exitFade.setDuration(EXIT_FADE_DURATION);
+            fragment.setExitTransition(exitFade);
+        }
+    }
+
 }
